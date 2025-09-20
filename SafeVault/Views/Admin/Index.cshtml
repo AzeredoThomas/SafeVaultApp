@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "Admin Panel";
+    var userRoles = ViewBag.UserRoles as Dictionary<string, IList<string>>;
+    var vaultItems = ViewBag.VaultItems as List<SafeVault.Models.VaultItem>;
+}
+
+<h2>👩‍💼 Admin Panel</h2>
+
+<h3>Användare och roller</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Användarnamn</th>
+            <th>Roller</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@string.Join(", ", userRoles[user.UserName])</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Alla valvposter</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ägare</th>
+            <th>Krypterad data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in vaultItems)
+        {
+            <tr>
+                <td>@item.OwnerUsername</td>
+                <td>@item.EncryptedData</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@model List<VaultItem>
+@{
+    ViewData["Title"] = "Mitt Valv";
+}
+
+<h2>🔐 Mitt Valv</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data (Dekrypterad)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OwnerUsername</td>
+                <td>@item.EncryptedData</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="/Vault/Create">Lägg till ny post</a>

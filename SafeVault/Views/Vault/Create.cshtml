@@ -1,0 +1,16 @@
+﻿@model VaultInputModel
+
+<h2>➕ Lägg till ny valvpost</h2>
+
+<form asp-action="Store" method="post">
+    <div class="form-group">
+        <label for="Secret">Data att lagra</label>
+        <input asp-for="Secret" class="form-control" />
+        <span asp-validation-for="Secret" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Spara</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
